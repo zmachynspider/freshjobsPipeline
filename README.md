@@ -1,6 +1,7 @@
 Pipeline to Pull Fresh Data Science Jobs
 ----
 ETL pipeline using Spark, Airflow, & EMR to crawl jobs from [Indeed.com](https://www.indeed.com/) and mine them for daily new postings and present them on a [website](http://www.jobs.com.s3-website-us-east-1.amazonaws.com/). Airflow monitoring can be found [here](http://ec2-54-82-204-189.compute-1.amazonaws.com:8080/admin/).
+
 ** info **  
 
     Dasha Zmachynskaya    : dasharya@gmail.com
@@ -16,6 +17,7 @@ Table of Contents
 - Installation & Setup
 - Discussion
 - Appendix
+
 ----
 Installation & Setup
 ----
@@ -44,7 +46,7 @@ Discussion
 Given more time, I would collect the final url (not the reroute url from indeed) since does expire. Next, I would continue to iterate on the Score of job postings. Currently it's a weighted average cosine similarity of the tf-idf vectors from unstructured text of job postings. These postings have a lot of junk irrelevant to the position. I imagine cleaning this text better would have significant gains in the quality of the score. Last, as the size of my dataset grows, I would expect something like Latent Sensitivity Hashing to be a more practical solution for accomplishing this task.
 
 ---
-Appendix
+Appendix - Properties
 ---
 
 1. Robustness & fault tolerance
@@ -94,3 +96,10 @@ Appendix
   Because I'm saving the original html files in S3, if something goes wrong, it is very straight-forward which key to reference in S3 to see what broke the code. In addition, my EMR batch script outputs logging to S3.
   ii. *how does my system fall short:*
   Currently, my try-except statement that iterates over my jobs postings just continues through the loop, without informing me on the errors or reasons why. I would set up my own logging code, since even though I have logging setup for S3, it's not easily comprehensible.
+
+  ---
+  Appendix - 3NF
+  ---
+I did not have to normalize my data, since the output that I present in my final output on the website is essentially a cleaned version of the original json, after reordering the output. Thus 3NF from would be contrived for my case. If I did choose to normalize my data, this is what it would look like however:
+
+![alt text](data/3NF.png "3NF")
