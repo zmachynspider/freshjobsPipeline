@@ -8,7 +8,7 @@ ETL pipeline using Spark, Airflow, & EMR to crawl jobs from [Indeed.com](https:/
 
 ----
 
-![alt text](data/DAG "DAG")
+![alt text](data/DAG.png "DAG")
 
 Table of Contents
 ----
