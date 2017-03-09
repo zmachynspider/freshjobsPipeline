@@ -1,0 +1,8 @@
+[
+  {
+    "Name": "Clean Jobs",
+    "Args": ["--deploy-mode","cluster","--master","yarn","--conf","spark.yarn.submit.waitAppCompletion=true","s3a://deproj/emr/job_ranker_v4.py"],
+    "ActionOnFailure": "TERMINATE_CLUSTER",
+    "Type": "Spark"
+  }
+]

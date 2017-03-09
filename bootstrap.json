@@ -1,0 +1,7 @@
+[
+   {
+      "Path" : "s3://deproj/emr/package_dependencies.sh",
+      "Name" : "Install dependent python modules",
+      "Args" : ["pandas","boto","boto3","markdown","plotly"]
+   }
+]
